@@ -27,13 +27,13 @@ export const birthdayData = {
         {
             id: 4,
             name: "Biggy",
-            message: "Tanii zalgasan utas zavgui baina ta daraa dahin zalgana uu",
+            message: "Tanii zalgasan dugaar zavgui baina ta daraa dahin zalgana uu",
             image: "/images/biggy.png", // Replace with actual image path
         },
         {
             id: 5,
             name: "Ulmaa",
-            message: "Tanii zalgasan utas holbogdoh bolojmgui baina ta daraa dahin zalgana uu",
+            message: "Tanii zalgasan utas holbogdoh bolojmgui baina ta daraa dahin zalgana uu, Nice Cock",
             image: "/images/ulmaa.png", // Replace with actual image path
         },
         {
