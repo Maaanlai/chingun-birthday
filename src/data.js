@@ -47,6 +47,12 @@ export const birthdayData = {
             name: "Oyuka",
             message: "I love your buttcheecks so much",
             image: "/images/oyuka.jpg", // Replace with actual image path
+        },
+        {
+            id: 7,
+            name: "Khangai",
+            message: "Go die in the desert if you love it so much",
+            image: "/images/khangai.png", // Replace with actual image path
         }
         // Add more friends as needed
     ]
