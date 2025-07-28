@@ -1092,20 +1092,16 @@ body {
     0% {
       top: -90px;
       opacity: 0;
-      transform: scale(0.5) rotate(0deg);
     }
     10% {
-      opacity: 0.6;
-      transform: scale(1) rotate(45deg);
+      opacity: 1;
     }
     90% {
-      opacity: 0.6;
-      transform: scale(1) rotate(315deg);
+      opacity: 1;
     }
     100% {
       top: 100vh;
       opacity: 0;
-      transform: scale(0.5) rotate(360deg);
     }
   }
 }
