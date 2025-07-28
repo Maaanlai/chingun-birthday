@@ -20,7 +20,8 @@ function App() {
     '522086432_2237355546764534_2064883714137558600_n.jpg',
     '522042703_664809136614948_6019022010090020995_n.jpg',
     '523779599_1224386049699421_7855736508641943233_n.jpg',
-    'africanbrother.png'
+    'africanbrother.png',
+    'british.jpg'
   ];
 
   // Sound effect functionality
