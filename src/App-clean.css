@@ -1,0 +1,526 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #333333;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: #ffffff;
+  min-height: 100vh;
+  color: #000000;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Intro Screen Styles */
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.intro-content {
+  height: 2vh;
+  text-align: center;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 2rem;
+  max-width: 200px;
+  background: #ffffff;
+}
+
+.intro-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.celebrant-name {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+.intro-date {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.birthday-emojis {
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Main Presentation Styles */
+.presentation-container {
+  width: 90%;
+  max-width: 800px;
+  background: white;
+  border: 1px solid #000000;
+  min-height: 500px;
+  position: relative;
+}
+
+/* Title Slide */
+.title-slide {
+  padding: 2rem;
+  text-align: left;
+  background: white;
+  min-height: 500px;
+}
+
+.title-content {
+  color: #000000;
+  max-width: 700px;
+}
+
+.main-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 1rem;
+}
+
+.celebrant-name-main {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #000000;
+  font-weight: normal;
+  text-align: center;
+}
+
+.birthday-date {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #666666;
+  text-align: center;
+  font-style: italic;
+}
+
+.birthday-wishes {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Friends Grid Styles */
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 1px solid #cccccc;
+}
+
+.friend-preview {
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  background: #ffffff;
+}
+
+.friend-preview:hover {
+  background: #f5f5f5;
+  border-color: #000000;
+}
+
+.friend-preview-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid #000000;
+  margin-bottom: 0.5rem;
+}
+
+.friend-preview-name {
+  color: #000000;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.click-hint {
+  color: #666666;
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Friend Slide */
+.friend-slide {
+  padding: 2rem;
+  min-height: 500px;
+  background: white;
+}
+
+.friend-card {
+  background: white;
+  border: 1px solid #cccccc;
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.friend-image-container {
+  text-align: center;
+}
+
+.friend-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid #000000;
+  transition: none;
+}
+
+.friend-image.clickable {
+  cursor: pointer;
+}
+
+.friend-image.clickable:hover {
+  border-color: #666666;
+}
+
+.relationship-tag {
+  background: #f0f0f0;
+  color: #000000;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #cccccc;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  display: inline-block;
+  font-weight: normal;
+}
+
+.click-to-read {
+  background: #f5f5f5;
+  color: #000000;
+  padding: 0.5rem;
+  border: 1px solid #cccccc;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  font-weight: normal;
+}
+
+.friend-content {
+  padding-left: 0;
+}
+
+.friend-name {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #000000;
+  font-weight: bold;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 0.5rem;
+}
+
+.message-teaser {
+  background: #f9f9f9;
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  text-align: left;
+}
+
+.message-teaser p {
+  font-size: 1rem;
+  color: #000000;
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+.reveal-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.reveal-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Navigation */
+.navigation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  padding: 1rem;
+  border: 1px solid #cccccc;
+}
+
+.nav-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: normal;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+  background: #f0f0f0;
+}
+
+.slide-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #cccccc;
+  background: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator.active {
+  background: #000000;
+  border-color: #000000;
+  color: white;
+}
+
+.indicator:hover {
+  background: #f0f0f0;
+}
+
+.indicator.active:hover {
+  background: #333333;
+}
+
+/* Message Modal Styles */
+.message-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.message-modal-content {
+  background: white;
+  border: 2px solid #000000;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.close-btn:hover {
+  background: #f0f0f0;
+}
+
+.modal-friend-info {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 1rem;
+}
+
+.modal-friend-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid #000000;
+  margin-bottom: 1rem;
+}
+
+.modal-friend-name {
+  font-size: 1.3rem;
+  color: #000000;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.modal-relationship {
+  background: #f0f0f0;
+  color: #000000;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #cccccc;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.modal-message {
+  background: #ffffff;
+  padding: 1rem;
+  border: 1px solid #cccccc;
+  margin-bottom: 2rem;
+}
+
+.modal-message h4 {
+  color: #000000;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.modal-message p {
+  color: #000000;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.modal-footer {
+  text-align: center;
+}
+
+.modal-close-btn {
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.modal-close-btn:hover {
+  background: #f0f0f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .friend-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .friend-content {
+    padding-left: 0;
+  }
+
+  .main-title {
+    font-size: 1.5rem;
+  }
+
+  .celebrant-name-main {
+    font-size: 1.2rem;
+  }
+
+  .intro-title {
+    font-size: 1.3rem;
+  }
+
+  .navigation {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .nav-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .friends-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .friend-preview-image {
+    width: 60px;
+    height: 60px;
+  }
+
+  .message-modal-content {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .modal-friend-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .modal-friend-name {
+    font-size: 1.1rem;
+  }
+
+  .reveal-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}

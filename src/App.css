@@ -1,38 +1,1003 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: #1a1a1a;
+  min-height: 100vh;
+  color: #e0e0e0;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
 .App {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Floating Images */
+.floating-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.floating-image {
+  position: absolute;
+  top: -120px;
+  width: 200px;
+  object-fit: cover;
+  border: 3px solid #888888;
+  animation: float-down linear forwards;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes float-down {
+  0% {
+    top: -120px;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 100vh;
+    opacity: 0;
+  }
+}
+
+/* Intro Screen Styles */
+.intro-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.intro-content {
+  text-align: center;
+  color: #e0e0e0;
+  border: 1px solid #666666;
+  padding: 1rem;
+  max-width: 200px;
+  max-height: 200px;
+  background: #2a2a2a;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+}
+
+.intro-title {
+  font-size: 0.6rem;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.celebrant-name {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  font-weight: normal;
+}
+
+.intro-date {
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+
+.birthday-emojis {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+}
+
+/* Main Presentation Styles */
+.presentation-container {
+  width: 90%;
+  max-width: 800px;
+  background: #2a2a2a;
+  border: 1px solid #666666;
+  min-height: 500px;
+  position: relative;
+}
+
+/* Title Slide */
+.title-slide {
+  padding: 2rem;
+  text-align: left;
+  background: #2a2a2a;
+  min-height: 500px;
+}
+
+.title-content {
+  color: #e0e0e0;
+  max-width: 700px;
+}
+
+.main-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #e0e0e0;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #666666;
+  padding-bottom: 1rem;
+}
+
+.celebrant-name-main {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #e0e0e0;
+  font-weight: normal;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.birthday-date {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: #aaaaaa;
+  text-align: center;
+  font-style: italic;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.birthday-wishes {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Friends Grid Styles */
+.friends-grid {
+  display: block;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid #444444;
+  max-width: 700px;
+}
+
+.friend-preview {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  padding: 1rem 0;
+  border-bottom: 1px solid #333333;
+  background: transparent;
+  gap: 1rem;
+  text-align: left;
+}
+
+.friend-preview:hover {
+  background: #2f2f2f;
+}
+
+.friend-preview-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid #666666;
+  flex-shrink: 0;
+}
+
+.friend-preview-content {
+  flex: 1;
+}
+
+.friend-preview-name {
+  color: #e0e0e0;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.friend-preview-name:hover {
+  color: #ffffff;
+}
+
+.click-hint {
+  color: #aaaaaa;
+  font-size: 0.9rem;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+/* Friend Slide */
+.friend-slide {
+  padding: 2rem;
+  min-height: 500px;
+  background: #2a2a2a;
+}
+
+.friend-card {
+  background: #333333;
+  border: 1px solid #444444;
+  padding: 2rem;
+  max-width: 700px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.friend-image-container {
+  text-align: center;
+}
+
+.friend-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid #666666;
+  transition: none;
+}
+
+.friend-image.clickable {
+  cursor: pointer;
+}
+
+.friend-image.clickable:hover {
+  border-color: #aaaaaa;
+}
+
+.click-to-read {
+  background: #383838;
+  color: #e0e0e0;
+  padding: 0.5rem;
+  border: 1px solid #555555;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  font-weight: normal;
+}
+
+.friend-content {
+  padding-left: 0;
+}
+
+.friend-name {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: #e0e0e0;
+  font-weight: bold;
+  border-bottom: 1px solid #555555;
+  padding-bottom: 0.5rem;
+}
+
+.message-teaser {
+  background: #383838;
+  padding: 1rem;
+  border: 1px solid #555555;
+  text-align: left;
+}
+
+.message-teaser p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+.reveal-btn {
+  background: #404040;
+  color: #e0e0e0;
+  border: 1px solid #666666;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.reveal-btn:hover {
+  background: #505050;
+}
+
+/* Navigation */
+.navigation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #333333;
+  padding: 1rem;
+  border: 1px solid #555555;
+}
+
+.nav-btn {
+  background: #404040;
+  color: #e0e0e0;
+  border: 1px solid #666666;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: normal;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 0.9rem;
+}
+
+.nav-btn:hover {
+  background: #505050;
+}
+
+.slide-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #555555;
+  background: #333333;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  color: #e0e0e0;
+}
+
+.indicator.active {
+  background: #666666;
+  border-color: #888888;
+  color: #ffffff;
+}
+
+.indicator:hover {
+  background: #404040;
+}
+
+.indicator.active:hover {
+  background: #777777;
+}
+
+/* Message Modal Styles */
+.message-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.message-modal-content {
+  background: #2a2a2a;
+  border: 2px solid #666666;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #404040;
+  color: #e0e0e0;
+  border: 1px solid #666666;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.close-btn:hover {
+  background: #505050;
+}
+
+.modal-friend-info {
+  text-align: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #555555;
+  padding-bottom: 1rem;
+}
+
+.modal-friend-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 0;
+  object-fit: cover;
+  border: 1px solid #666666;
+  margin-bottom: 1rem;
+}
+
+.modal-friend-name {
+  font-size: 1.3rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.modal-message {
+  background: #333333;
+  padding: 1rem;
+  border: 1px solid #555555;
+  margin-bottom: 2rem;
+}
+
+.modal-message h4 {
+  color: #e0e0e0;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.modal-message p {
+  color: #e0e0e0;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.modal-footer {
+  text-align: center;
+}
+
+.modal-close-btn {
+  background: #404040;
+  color: #e0e0e0;
+  border: 1px solid #666666;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.modal-close-btn:hover {
+  background: #505050;
+}
+
+/* Friend Slide */
+.friend-slide {
+  padding: 2rem;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.friend-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.friend-image-container {
+  position: relative;
+  text-align: center;
+}
+
+.friend-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.friend-image:hover {
+  transform: scale(1.05);
+}
+
+.relationship-tag {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
   color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  display: inline-block;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+.friend-content {
+  padding-left: 1rem;
 }
 
-@keyframes App-logo-spin {
+.friend-name {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.message-container {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 15px;
+  border-left: 5px solid #3498db;
+}
+
+.friend-message {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #34495e;
+  font-style: italic;
+}
+
+/* Friends Grid Styles */
+.friends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 2rem;
+}
+
+.friend-preview {
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.friend-preview:hover {
+  transform: translateY(-10px) scale(1.05);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.friend-preview-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.friend-preview:hover .friend-preview-image {
+  border-color: #ff6b6b;
+  transform: rotate(5deg);
+}
+
+.friend-preview-name {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.click-hint {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+/* Interactive Friend Slide Styles */
+.friend-image.clickable {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.friend-image.clickable:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border-color: #ff6b6b;
+}
+
+.click-to-read {
+  background: linear-gradient(45deg, #4ecdc4, #44a08d);
+  color: white;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+.message-teaser {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 15px;
+  border-left: 5px solid #e74c3c;
+  text-align: center;
+}
+
+.message-teaser p {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.reveal-btn {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a6f);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(238, 90, 111, 0.4);
+}
+
+.reveal-btn:hover {
+  background: linear-gradient(45deg, #ee5a6f, #ff6b6b);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(238, 90, 111, 0.6);
+}
+
+/* Navigation */
+.navigation {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.nav-btn {
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: linear-gradient(45deg, #764ba2, #667eea);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.slide-indicators {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.indicator {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator.active {
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  border-color: #ff6b6b;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Message Modal Styles */
+.message-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.message-modal-content {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #c0392b;
+  transform: scale(1.1);
+}
+
+.modal-friend-info {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.modal-friend-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #3498db;
+  margin-bottom: 1rem;
+}
+
+.modal-friend-name {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.modal-relationship {
+  background: linear-gradient(45deg, #3498db, #2980b9);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.modal-message {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+  border-left: 5px solid #3498db;
+}
+
+.modal-message h4 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.modal-message p {
+  color: #34495e;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.modal-footer {
+  text-align: center;
+}
+
+.modal-close-btn {
+  background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-close-btn:hover {
+  background: linear-gradient(45deg, #7f8c8d, #95a5a6);
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .friend-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .friend-content {
+    padding-left: 0;
+  }
+
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .celebrant-name-main {
+    font-size: 1.8rem;
+  }
+
+  .intro-title {
+    font-size: 2.5rem;
+  }
+
+  .navigation {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+
+  .nav-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .friends-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .friend-preview-image {
+    width: 80px;
+    height: 80px;
+  }
+
+  .message-modal-content {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .modal-friend-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .modal-friend-name {
+    font-size: 1.5rem;
+  }
+
+  .reveal-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
   }
 }
