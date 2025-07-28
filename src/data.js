@@ -23,7 +23,7 @@ export const birthdayData = {
         {
             id: 3,
             name: "Aniraa",
-            message: "Happy Birthday to one of the most amazing people I know! Your kindness and positivity always brighten everyone's day. Have a fantastic celebration!",
+            message: "uu bhgushd",
             image: "/images/aniraa.jpg", // Replace with actual image path
             relationship: "Work Friend"
         },

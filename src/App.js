@@ -32,6 +32,24 @@ function App() {
     });
   };
 
+  const playChirp = () => {
+    const audio = new Audio('/smoke_detector_chirp_sound.mp3');
+    audio.volume = 0.3; // Set volume to 30%
+
+    // Random duration between 7-10 seconds
+    const randomDuration = Math.random() * (10 - 7) + 7;
+
+    audio.play().catch(error => {
+      console.log('Chirp audio play failed:', error);
+    });
+
+    // Stop the audio after the random duration
+    setTimeout(() => {
+      audio.pause();
+      audio.currentTime = 0;
+    }, randomDuration * 1000);
+  };
+
   // Floating images functionality
   const createFloatingImage = useCallback(() => {
     const randomImage = availableImages[Math.floor(Math.random() * availableImages.length)];
@@ -60,6 +78,7 @@ function App() {
   }, [createFloatingImage]);
 
   useEffect(() => {
+    playChirp()
     const timer = setTimeout(() => {
       setShowIntro(false);
     }, 3000);

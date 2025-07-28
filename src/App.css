@@ -11,6 +11,13 @@ body {
   color: #e0e0e0;
   line-height: 1.6;
   font-size: 14px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .App {
@@ -187,6 +194,9 @@ body {
   background: transparent;
   gap: 1rem;
   text-align: left;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  touch-action: manipulation;
+  min-height: 44px; /* iOS recommended minimum touch target */
 }
 
 .friend-preview:hover {
@@ -422,6 +432,10 @@ body {
   justify-content: center;
   transition: background-color 0.2s ease;
   font-family: "Times New Roman", Times, serif;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .close-btn:hover {
@@ -486,6 +500,9 @@ body {
   cursor: pointer;
   transition: background-color 0.2s ease;
   font-family: "Times New Roman", Times, serif;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  min-height: 44px;
 }
 
 .modal-close-btn:hover {
@@ -938,66 +955,258 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .friend-card {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 1rem;
+  .App {
+    padding: 10px;
   }
 
-  .friend-content {
-    padding-left: 0;
+  .presentation-container {
+    width: 100%;
+    margin: 0;
+    min-height: calc(100vh - 20px);
+  }
+
+  .title-slide {
+    padding: 1rem;
+    min-height: calc(100vh - 20px);
   }
 
   .main-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    padding-bottom: 0.8rem;
   }
 
   .celebrant-name-main {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
   }
 
-  .intro-title {
-    font-size: 2.5rem;
-  }
-
-  .navigation {
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 1rem;
-  }
-
-  .nav-btn {
-    padding: 0.5rem 1rem;
+  .birthday-date {
     font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .birthday-wishes {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
 
   .friends-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    padding: 1rem;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+
+  .friend-preview {
+    padding: 0.8rem 0;
+    gap: 0.8rem;
   }
 
   .friend-preview-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .friend-preview-name {
+    font-size: 0.9rem;
+  }
+
+  .click-hint {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .message-modal-content {
+    margin: 0.5rem;
+    padding: 1rem;
+    max-height: 85vh;
+  }
+
+  .modal-friend-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .modal-friend-name {
+    font-size: 1.2rem;
+  }
+
+  .modal-message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .modal-message p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .modal-close-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .close-btn {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
+
+  /* Intro screen mobile */
+  .intro-content {
+    max-width: 280px;
+    max-height: 250px;
+    padding: 1.2rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .intro-title {
+    font-size: 0.7rem;
+  }
+
+  .celebrant-name {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .intro-date {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .birthday-emojis {
+    font-size: 0.8rem;
+    gap: 0.2rem;
+  }
+
+  /* Floating images mobile */
+  .floating-image {
+    width: 70px;
+    height: 70px;
+    top: -90px;
+  }
+
+  @keyframes float-down {
+    0% {
+      top: -90px;
+      opacity: 0;
+      transform: scale(0.5) rotate(0deg);
+    }
+    10% {
+      opacity: 0.6;
+      transform: scale(1) rotate(45deg);
+    }
+    90% {
+      opacity: 0.6;
+      transform: scale(1) rotate(315deg);
+    }
+    100% {
+      top: 100vh;
+      opacity: 0;
+      transform: scale(0.5) rotate(360deg);
+    }
+  }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .presentation-container {
+    border: none;
+    min-height: 100vh;
+  }
+
+  .title-slide {
+    padding: 0.5rem;
+    min-height: 100vh;
+  }
+
+  .main-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .celebrant-name-main {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .birthday-date {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .birthday-wishes {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .friends-grid {
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .friend-preview {
+    padding: 0.6rem 0;
+    gap: 0.6rem;
+  }
+
+  .friend-preview-image {
+    width: 45px;
+    height: 45px;
+  }
+
+  .friend-preview-name {
+    font-size: 0.85rem;
+  }
+
+  .click-hint {
+    font-size: 0.75rem;
+  }
+
+  .message-modal-content {
+    margin: 0.25rem;
+    padding: 0.8rem;
+  }
+
+  .modal-friend-image {
     width: 80px;
     height: 80px;
   }
 
-  .message-modal-content {
-    margin: 1rem;
-    padding: 1.5rem;
-  }
-
-  .modal-friend-image {
-    width: 120px;
-    height: 120px;
-  }
-
   .modal-friend-name {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
   }
 
-  .reveal-btn {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
+  .modal-message p {
+    font-size: 0.85rem;
+  }
+
+  .intro-content {
+    max-width: 240px;
+    max-height: 200px;
+    padding: 0.8rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .intro-title {
+    font-size: 0.6rem;
+  }
+
+  .celebrant-name {
+    font-size: 0.9rem;
+  }
+
+  .intro-date {
+    font-size: 0.7rem;
+  }
+
+  .floating-image {
+    width: 50px;
+    height: 50px;
   }
 }
