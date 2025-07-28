@@ -1084,8 +1084,7 @@ body {
 
   /* Floating images mobile */
   .floating-image {
-    width: 70px;
-    height: 70px;
+    width: 200px;
     top: -90px;
   }
 
